@@ -1,5 +1,6 @@
 package net.aleiv.core.paper.commands;
 
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
@@ -10,6 +11,7 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Subcommand;
 import lombok.NonNull;
 import net.aleiv.core.paper.Core;
+import net.aleiv.core.paper.Game.GameStage;
 import net.md_5.bungee.api.ChatColor;
 
 @CommandAlias("global")
@@ -42,5 +44,33 @@ public class GlobalCMD extends BaseCommand {
             sender.sendMessage(ChatColor.RED + "No target.");
         }
 
+    }
+
+    @Subcommand("stage")
+    public void stage(CommandSender sender, GameStage string){
+        var game = instance.getGame();
+
+        switch (string) {
+            case LOBBY:{
+                game.setGameStage(GameStage.LOBBY);
+            }break;
+
+            case PREGAME:{
+                game.setGameStage(GameStage.PREGAME);
+            }break;
+
+            case INGAME:{
+                game.setGameStage(GameStage.INGAME);
+            }break;
+
+            case POSTGAME:{
+                game.setGameStage(GameStage.POSTGAME);
+                
+            }break;
+        
+            default:
+                break;
+        }
+        sender.sendMessage("Stage change to " + string);
     }
 }

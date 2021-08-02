@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 import net.aleiv.core.paper.commands.GlobalCMD;
 import net.aleiv.core.paper.listeners.GlobalListener;
+import net.aleiv.core.paper.listeners.LobbyListener;
 
 
 public class Core extends JavaPlugin{
@@ -29,6 +30,7 @@ public class Core extends JavaPlugin{
         taskChainFactory = BukkitTaskChainFactory.create(this);
 
         Bukkit.getPluginManager().registerEvents(new GlobalListener(this), this);
+        Bukkit.getPluginManager().registerEvents(new LobbyListener(this), this);
 
         commandManager = new PaperCommandManager(this);
 

@@ -1,5 +1,5 @@
-name: NoobstersCore
+name: VersusCore
 version: ${version}
-main: net.noobsters.core.paper.Core
+main: net.aleiv.core.paper.Core
 api-version: 1.16
 api: ["1.16"]
